@@ -1,5 +1,10 @@
+<script setup>
+import {useUserStore} from '@/stores/user'
+
+const user = useUserStore()
+</script>
 <template>
-  <div class=" bg-black bg-opacity-50 absolute top-0 left-0 right-0 bottom-0 flex flex-col">
+  <div v-if="!user.isLogin" class=" bg-black bg-opacity-50 absolute top-0 left-0 right-0 bottom-0 flex flex-col">
     <div class=" my-auto">
       <form class="form-signin">
         <h2 class="form-signin-heading text-xl pt-4">请登录</h2>
@@ -11,7 +16,7 @@
           <div><label class="checkbox">
             <!-- <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me -->
           </label></div>
-          <t-button class="btn btn-lg btn-primary btn-block" type="submit">Login</t-button>
+          <t-button class="btn btn-lg btn-primary btn-block" type="submit" @click="user.login">Login</t-button>
         </div>
       </form>
     </div>
