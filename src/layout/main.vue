@@ -2,7 +2,7 @@
   <div class="tdesign-demo-item--layout h-screen flex flex-col">
     <t-layout>
       <t-header>
-        <t-head-menu value="item1" height="120px">
+        <t-head-menu  value="item1" height="120px">
           <template #logo>
             <img width="136" class="logo" src="https://www.tencent.com/img/index/menu_logo_hover.png" alt="logo" />
           </template>
@@ -78,7 +78,11 @@
         </t-aside>
         <t-layout>
           <t-content>
-            <div>Content</div>
+            <router-view v-slot="{ Component }">
+              <transition name="fade">
+                <component :is="Component" />
+              </transition>
+            </router-view>
           </t-content>
           <t-footer>Copyright @ 2019-{{ new Date().getFullYear() }} Tencent. All Rights Reserved</t-footer>
         </t-layout>
